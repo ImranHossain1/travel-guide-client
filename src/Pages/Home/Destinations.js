@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import useDestinations from '../../hooks/useDestinations';
 import Loading from '../Shared/Loading';
 import PrimaryButton from '../Shared/PrimaryButton';
@@ -7,6 +9,7 @@ import Destination from './Destination';
 
 const Destinations = () => {
     const [destinations, isLoading] = useDestinations();
+    const [user] = useAuthState(auth);
     if(isLoading){
         return <Loading></Loading>
     }
@@ -22,7 +25,10 @@ const Destinations = () => {
                 }
             </div>
             <div className='flex justify-center'>
-                <PrimaryButton><Link to='/destination'>See More</Link></PrimaryButton>
+                {
+                    !user? <PrimaryButton><Link to='/destination'>Login to Explore more places</Link></PrimaryButton>
+                    : <PrimaryButton><Link to='/destination'>Explore more places</Link></PrimaryButton>
+                }
             </div>
         </div>
     );

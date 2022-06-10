@@ -7,9 +7,9 @@ module.exports = {
     themes: [
       {
         tourism: {
-          primary: "#FF8C00",
-          secondary: "#DAA520",
-          accent: "#3A4256",
+          primary: "#2BC5CB",
+          secondary: "#027276",
+          accent: "#73F15C",
           neutral: "#3d4451",
           "base-100": "#ffffff",
           'half': '50%',

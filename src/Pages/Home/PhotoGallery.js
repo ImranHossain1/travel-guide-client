@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import usePhotos from '../../hooks/usePhotos';
 import Loading from '../Shared/Loading';
 import PrimaryButton from '../Shared/PrimaryButton';
 import './Gallery.css'
 const Gallery = () => {
+    const [user] = useAuthState(auth);
     const [photos, isLoading]= usePhotos()
     if(isLoading){
         <Loading></Loading>
@@ -27,7 +30,10 @@ const Gallery = () => {
                 }
             </div>
             <div className='flex justify-center'>
-                <PrimaryButton><Link to='/gallery'>See More Photos</Link></PrimaryButton>
+                {
+                    user? <PrimaryButton><Link to='/gallery'>See More Photos</Link></PrimaryButton> 
+                    : <PrimaryButton><Link to='/gallery'>Log in to See More Photos</Link></PrimaryButton>
+                }
             </div>
         </>
 )};
