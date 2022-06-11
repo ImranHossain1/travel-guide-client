@@ -27,7 +27,6 @@
     min-height: 20rem;
     min-width: 30rem;
     padding: 10px;
-    margin: 10px 0;
 }
 .item img{
     width: 100%;;
@@ -53,6 +52,11 @@
         -moz-column-count:2;
         column-count:2;
    }
+    .item{
+        min-height: 20rem;
+        min-width: 25rem;
+        padding: 8px;
+    }
 }
 
 @media(max-width:480px){
@@ -64,5 +68,11 @@
         -moz-column-width:100%;
         column-width:100%;
     }
+    .item{
+        min-height: 15rem;
+        min-width: 20rem;
+        padding: 8px;
+    }
+
 }
 

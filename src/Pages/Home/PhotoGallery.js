@@ -15,8 +15,10 @@ const Gallery = () => {
     const [user] = useAuthState(auth);
     const [photos, isLoading]= usePhotos();
     useEffect(()=>{
+        console.log(carousel.current.scrollWidth);
+        console.log(carousel.current.offsetWidth);
         setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
-    },[])
+    },[photos])
     if(isLoading){
         <Loading></Loading>
     }
@@ -25,8 +27,8 @@ const Gallery = () => {
             <div>
                 <h3 className='text-5xl font-bold text-primary text-center my-5'>Photo Gallery</h3 >
             </div>
-            <div>
-                <motion.div ref={carousel} className='carousel mx-5' whileTap={{cursor: 'grabbing'}}>
+            <div className='m-5 '>
+                <motion.div ref={carousel} className='carousel rounded' whileTap={{cursor: 'grabbing'}}>
                     <motion.div drag="x" dragConstraints={{right:0, left: -width}} className='inner-carousel'>
                     {
                         photos?.slice(0,6).map(photo=>{
