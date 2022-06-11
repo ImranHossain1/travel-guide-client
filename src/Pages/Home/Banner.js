@@ -9,7 +9,7 @@ const Banner = () => {
         <div style={{
             background: `url(${banner2})`
         }} className="hero min-h-screen">
-            <div class="hero-overlay bg-opacity-60 "></div>
+            <div className="hero-overlay bg-opacity-60 "></div>
             <div className="hero-content flex-col lg:flex-row-reverse gallery">
                 <div className='pics'>
                     <img src={banner1} className="max-w-xs rounded-lg shadow-2xl" />
