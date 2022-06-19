@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginbg from '../../assets/images/login3.jpg';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
+import useToken from '../../hooks/useToken';
 const Login = () => {
     const {register, handleSubmit, watch, formState: { errors }}= useForm();
     let signInErrorMessage;
@@ -15,12 +16,15 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user || guser)
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    if(user || guser){
-        navigate(from, { replace: true });
-    } 
+    useEffect(()=>{
+        if(token){
+            navigate(from, { replace: true });
+        }
+    },[token, from, navigate])
     if(loading || gLoading){
         return <Loading></Loading>
     }

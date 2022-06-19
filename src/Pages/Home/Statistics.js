@@ -6,6 +6,7 @@ const Statistics = () => {
             <div>
                 <h3 className='text-5xl font-bold text-primary text-center my-12'>Statistics</h3 >
             </div>
+
             <div className="stats stats-vertical lg:stats-horizontal shadow flex flex-col md:flex-row">
                 <div className="stat place-items-center">
                     <div className="stat-figure text-secondary">

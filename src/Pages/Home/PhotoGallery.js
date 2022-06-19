@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import usePhotos from '../../hooks/usePhotos';
@@ -15,8 +14,6 @@ const Gallery = () => {
     const [user] = useAuthState(auth);
     const [photos, isLoading]= usePhotos();
     useEffect(()=>{
-        console.log(carousel.current.scrollWidth);
-        console.log(carousel.current.offsetWidth);
         setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
     },[photos])
     if(isLoading){
@@ -29,12 +26,12 @@ const Gallery = () => {
             </div>
             <div className='m-5 '>
                 <motion.div ref={carousel} className='carousel rounded' whileTap={{cursor: 'grabbing'}}>
-                    <motion.div drag="x" dragConstraints={{right:0, left: -width}} className='inner-carousel'>
+                    <motion.div drag="x" dragConstraints={{right:0, left: -width}} className='gallery inner-carousel'>
                     {
                         photos?.slice(0,6).map(photo=>{
                             return(
-                                <motion.div key={photo._id} className='item'>
-                                    <img src={photo.imgUrl} alt=""/>
+                                <motion.div key={photo._id} className='item pics'>
+                                    <img src={photo.image} alt=""/>
                                 </motion.div>
                             )
                         })

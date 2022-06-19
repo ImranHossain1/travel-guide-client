@@ -18,7 +18,7 @@ const Gallery = () => {
                     photos?.map(photo=>{
                         return(
                             <div key={photo._id} className='pics'>
-                                <img src={photo.imgUrl} alt="" className='w-100 rounded-lg'/>
+                                <img src={photo.image} alt="" className='w-100 rounded-lg'/>
                             </div>
                         )
                     })

@@ -1,47 +1,55 @@
 [
     {
+        "email" :"berlin@berlin.com",
         "destinationName" : "Berlin",
         "description": "Berlin, Germany’s capital, dates to the 13th century. Reminders of the city's turbulent 20th-century history include its Holocaust memorial and the Berlin Wall's graffitied remains.",
         "cost": 500,
         "img" : "https://i.ibb.co/nMTdGJM/berlin.jpg"
     },
     {
+        "email" :"munich@berlin.com",
         "destinationName" : "Munich",
         "description": "Munich, Bavaria’s capital, is home to centuries-old buildings and numerous museums. The city is known for its annual Oktoberfest celebration and its beer halls, including the famed Hofbräuhaus, founded in 1589.",
         "cost": 688,
         "img" : "https://i.ibb.co/VQ59NrG/Munich.webp"
     },
     {
+        "email" :"frankfurt@berlin.com",
         "destinationName" : "Frankfurt",
         "description": "Frankfurt, a central German city on the river Main, is a major financial hub that's home to the European Central Bank. It's the birthplace of famed writer Johann Wolfgang von Goethe, whose former home is now the Goethe House Museum.",
         "cost": 299,
         "img" : "https://i.ibb.co/w4czyVT/frankfurt.jpg"
     },
     {
+        "email" :"stutgart@berlin.com",
         "destinationName" : "Stuttgart",
         "description": "Stuttgart, capital of southwest Germany’s Baden-Württemberg state, is known as a manufacturing hub. Mercedes-Benz and Porsche have headquarters and museums here.",
         "cost": 199,
         "img" : "https://i.ibb.co/zbfFd9J/Stuttgart.jpg"
     },
     {
+        "email" :"cologne@berlin.com",
         "destinationName" : "Cologne",
         "description": "Cologne, a 2,000-year-old city spanning the Rhine River in western Germany, is the region’s cultural hub. A landmark of High Gothic architecture set amid reconstructed old town, the twin-spired Cologne Cathedral is also known for its gilded medieval reliquary and sweeping river views.",
         "cost": 250,
         "img" : "https://i.ibb.co/7bnty4x/colonge.jpg"
     },
     {
+        "email" :"dusseldorf@berlin.com",
         "destinationName" : "Düsseldorf",
         "description": "Düsseldorf is a city in western Germany known for its fashion industry and art scene. It's divided by the Rhine River, with its Altstadt (Old Town) on the east bank and modern commercial areas to the west.",
         "cost": 150,
         "img" : "https://i.ibb.co/M6n3rs5/D-sseldorf.jpg"
     },
     {
+        "email" :"humburg@berlin.com",
         "destinationName" : "Humburg",
         "description": "Hamburg, a major port city in northern Germany, is connected to the North Sea by the Elbe River. It's crossed by hundreds of canals, and also contains large areas of parkland.",
         "cost": 399,
         "img" : "https://i.ibb.co/T0TGQ8H/Humburg.jpg"
     },
     {
+        "email" :"Nuremberg@berlin.com",
         "destinationName" : "Nuremberg ",
         "description": "Nuremberg is the second-largest city of the German state of Bavaria after its capital Munich, and its 518,370 inhabitants make it the 14th-largest city in Germany.",
         "cost": 288,
