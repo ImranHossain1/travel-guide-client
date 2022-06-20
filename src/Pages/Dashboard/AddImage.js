@@ -63,8 +63,8 @@ const AddImage = () => {
     }
     return (
         <div>
-            <h2 className='text-center'>Upload New Image</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className='text-5xl font-bold text-primary text-center my-5'>Upload New Image</h2>
+            <form onSubmit={handleSubmit(onSubmit)}  className="flex flex-col items-center">
                     <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Location</span>

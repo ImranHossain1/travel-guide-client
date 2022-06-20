@@ -18,7 +18,7 @@ const ManageDestinations = () => {
     }
     return (
         <div className='w-full mx-5'>
-            <h2 className="text-2xl">Total Destinations: {destinations.length}</h2>
+            <h2 className='text-5xl font-bold text-primary text-center my-5'>Total Destinations</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

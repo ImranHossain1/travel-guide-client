@@ -48,9 +48,9 @@ const AddReview = () => {
     }
     return (
         <div>
-            <h2 className='text-center'>Please Give us a Review how you Felt your Trip</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-control w-full max-w-xs">
+            <h2 className='text-5xl font-bold text-primary text-center my-5'>Please Give us a Review</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+                    <div className="form-control w-full max-w-xs " >
                             <label className="label">
                                 <span className="label-text">Review by</span>
                             </label>
@@ -78,7 +78,7 @@ const AddReview = () => {
                                 {errors.comment?.type === 'required' && <span className="label-text-alt text-red-500">{errors.comment.message}</span>}
                             </label>
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full max-w-xs mb-5">
                             <label className="label">
                                 <span className="label-text">Rate Your Jurney:</span>
                             </label>
