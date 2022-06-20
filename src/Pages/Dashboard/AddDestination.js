@@ -32,7 +32,7 @@ const AddDestination = () => {
                     img: img
                 }
                 //send data to db
-                fetch('http://localhost:5000/destination', {
+                fetch('https://aqueous-dawn-43600.herokuapp.com/destination', {
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json',

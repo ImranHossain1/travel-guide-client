@@ -107,7 +107,7 @@ const Register = () => {
                     {signInErrorMessage}
                     <button className='w-full my-5 py-2 bg-teal-500  hover:bg-teal-800 text-white font-semibold rounded-lg'>Sign In</button>
                     <div className='flex justify-center text-gray-400 py-2'>
-                        <p className='flex items-center'><Link to='/register'>Don't have any account? Please Register</Link></p>
+                        <p className='flex items-center'><Link to='/login'>Already Have an Accoount? Please login</Link></p>
                     </div>
                     <div className="divider text-gray-400">OR</div>
                     <button 

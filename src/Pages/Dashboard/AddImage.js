@@ -33,12 +33,12 @@ const AddImage = () => {
             if(result.success){
                 const img = result.data.url;
                 const photo ={
-                    uploadedBy: data.name,
+                    uploadedBy: user.displayName,
                     place: location,
                     image: img
                 }
                 //send data to db
-                fetch('http://localhost:5000/photos', {
+                fetch('https://aqueous-dawn-43600.herokuapp.com/photos', {
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json',

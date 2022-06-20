@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user)
-    const {data: userData, isLoading, refetch} = useQuery(["user"], ()=>fetch(`http://localhost:5000/user/${user.email}`).then(res=>res.json()));
+    const {data: userData, isLoading, refetch} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`).then(res=>res.json()));
     if(isLoading){
         return <Loading></Loading>
     }

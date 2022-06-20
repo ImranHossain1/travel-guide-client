@@ -8,7 +8,7 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L7ggVFbphkgAKK4OPhZ0A288iRm9B6d1vb4E06DO2TP5RMWKrVWyYkZZKjJWMMl79Ta2ERKd65xeZ96p9PbKhYf00biEstqRp');
 const Payment = () => {
     const {id} = useParams();
-    const url = `http://localhost:5000/booking/${id}`;
+    const url = `https://aqueous-dawn-43600.herokuapp.com/booking/${id}`;
     const {data: booking, isLoading} = useQuery(['booking', id], ()=>fetch(url,{
          method: 'GET',
          headers: {

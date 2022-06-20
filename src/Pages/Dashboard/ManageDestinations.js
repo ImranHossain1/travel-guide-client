@@ -6,7 +6,7 @@ import DestinationRow from './DestinationRow';
 
 const ManageDestinations = () => {
     const [deletingDestination, setDeletingDestination] = useState(null);
-    const {data: destinations, isLoading, refetch} = useQuery('manageDestination', ()=>fetch('http://localhost:5000/destination',{
+    const {data: destinations, isLoading, refetch} = useQuery('manageDestination', ()=>fetch('https://aqueous-dawn-43600.herokuapp.com/destination',{
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

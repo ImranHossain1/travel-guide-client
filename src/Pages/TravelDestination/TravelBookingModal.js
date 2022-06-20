@@ -20,7 +20,7 @@ const TravelBookingModal = ({booking, date, setDate ,setBooking, refetch}) => {
             userEmail: user.email,
             phone: e.target.phone.value
         }
-        fetch('http://localhost:5000/bookedDestination', {
+        fetch('https://aqueous-dawn-43600.herokuapp.com/bookedDestination', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -13,10 +13,11 @@ import { useQuery } from 'react-query';
 const UpdateProfile = () => {
     const [date, setDate] = useState(new Date());
     let formattedDate = format(date, 'PP')
+    let dateofBirth;
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [user, loading]= useAuthState(auth)
     const imgStrorageKey = '634b89a1202c978f0b0218c7ddea37ca'
-    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`http://localhost:5000/user/${user.email}`).then(res=>res.json()));
+    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`).then(res=>res.json()));
     const [editImage , setEditImage] = useState(false)
     const [editGender , setEditGender] = useState(false)
     const [editDob , setEditDob] = useState(false)
@@ -40,10 +41,10 @@ const UpdateProfile = () => {
         <Loading></Loading>
     }
     const onSubmit = async data =>{
-        console.log(data)
          if(data.image){
             const image = data?.image[0];
             const formData = new FormData();
+            
             formData.append('image',image);
             const url = `https://api.imgbb.com/1/upload?key=${imgStrorageKey}`;
             fetch(url, {
@@ -54,16 +55,16 @@ const UpdateProfile = () => {
                 if(result.success){
                 const img = result.data.url;
                 if(!editDob){
-                    formattedDate = userData.dob
+                    dateofBirth = userData.dob
                 }
                 const profile ={
                     gender: data.gender,
                     phone: data.phone,
                     image: img,
-                    dob: formattedDate
+                    dob: dateofBirth || formattedDate
                 }
                 //send data to db
-                fetch(`http://localhost:5000/user/${user?.email}`, {
+                fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user?.email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type' : 'application/json',
@@ -87,14 +88,15 @@ const UpdateProfile = () => {
         }
         else{
             if(!editDob){
-                formattedDate = userData.dob
+                dateofBirth = userData.dob
             }
             const profile ={
                 gender: data.gender,
                 phone: data.phone,
-                dob: formattedDate
+                dob: dateofBirth ||  formattedDate 
             }
-            fetch(`http://localhost:5000/user/${user?.email}`, {
+            console.log(profile)
+            fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user?.email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type' : 'application/json',
@@ -117,9 +119,9 @@ const UpdateProfile = () => {
         
     }
     return (
-        <div className='w-full mx-5'>
-            <h2 className='text-center'>Upload New Image</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center border-2">
+        <div className='w-full mx-5 mb-12'>
+            <h2 className='text-5xl font-bold text-primary text-center my-5'>Upload New Image</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center">
                     <div className="form-control w-full max-w-xs">
                                 <label className="label">
                                     <span className="label-text">Upload Your Profile Photo</span>

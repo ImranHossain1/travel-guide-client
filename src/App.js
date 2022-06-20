@@ -23,13 +23,15 @@ import ManageDestinations from './Pages/Dashboard/ManageDestinations';
 import AddDestination from './Pages/Dashboard/AddDestination';
 import UpdateProfile from './Pages/Dashboard/UpdateProfile';
 import AddReview from './Pages/Dashboard/AddReview';
+import Reviews from './Pages/Reviews/Reviews';
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}/>
-        <Route path='destination' element={<RequireAuth><TravelDestinations/></RequireAuth>}/>
+        <Route path='destination' element={<TravelDestinations/>}/>
+        <Route path='reviews' element={<Reviews/>}/>
         <Route path='destination/:id' element={<RequireAuth><TravelBooking/></RequireAuth>}/>
         <Route path='gallery' element={<RequireAuth><Gallery/></RequireAuth>}/>
         <Route path='dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>

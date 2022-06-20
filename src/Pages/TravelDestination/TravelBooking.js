@@ -13,7 +13,7 @@ const TravelBooking = () => {
     //const formattedDate = format(date, 'PP')
     const today = new Date();
     const {id} = useParams();
-    const url= `http://localhost:5000/destination/${id}`;
+    const url= `https://aqueous-dawn-43600.herokuapp.com/destination/${id}`;
     const {data:destination, isLoading, refetch} = useQuery(['destination', id], ()=>fetch(url,{
         method: 'GET'
     }).then(res=>res.json()));
