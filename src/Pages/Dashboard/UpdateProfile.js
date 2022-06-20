@@ -10,10 +10,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 const UpdateProfile = () => {
     const [date, setDate] = useState(new Date());
     let formattedDate = format(date, 'PP')
     let dateofBirth;
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [user, loading]= useAuthState(auth)
     const imgStrorageKey = '634b89a1202c978f0b0218c7ddea37ca'
@@ -78,6 +80,7 @@ const UpdateProfile = () => {
                    if(inserted.result.modifiedCount === 1){
                        toast.success('Profile Successfully');
                        reset();
+                       navigate('/dashboard');
                    }
                    else{
                        toast.error('Failed to Update Your Profile')
@@ -110,6 +113,7 @@ const UpdateProfile = () => {
                if(inserted.result.modifiedCount === 1){
                    toast.success('Profile Successfully');
                    reset();
+                   navigate('/dashboard');
                }
                else{
                    toast.error('Failed to Update Your Profile')

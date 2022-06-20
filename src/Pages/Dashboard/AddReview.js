@@ -3,7 +3,6 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
-import useDestinations from '../../hooks/useDestinations';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 import Rating from 'react-rating';
