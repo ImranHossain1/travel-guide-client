@@ -23,7 +23,7 @@ const Profile = () => {
                         <tbody>
                         <tr>
                             <th>Date of Birth:</th>
-                            <td>{userData.dob  || "Not Specified"}</td>
+                            <td className='uppercase'>{userData.dob  || "Not Specified"}</td>
                         </tr>
                         <tr>
                             <th>Gender: </th>
@@ -31,7 +31,7 @@ const Profile = () => {
                         </tr>
                         <tr>
                             <th>Phone Number:</th>
-                            <td>{userData.phone || "Not Specified"}</td>
+                            <td className='uppercase'>{userData.phone || "Not Specified"}</td>
                         </tr>
                         </tbody>
                     </table>

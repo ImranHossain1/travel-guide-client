@@ -57,7 +57,7 @@ const AddDestination = () => {
     }
     return (
         <div>
-            <h2 className='text-5xl font-bold text-primary text-center my-5'>Upload New Image</h2>
+            <h2 className='text-5xl font-bold text-primary text-center my-5'>Add a New Destination</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
                     <div className="form-control w-full max-w-xs">
                             <label className="label">
