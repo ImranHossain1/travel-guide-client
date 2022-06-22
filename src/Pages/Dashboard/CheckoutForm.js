@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const CheckoutForm = ({booking}) => {
     const stripe = useStripe();
+    const [disabledButton, setDisabledButton] = useState(false)
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
@@ -11,6 +12,7 @@ const CheckoutForm = ({booking}) => {
     const {_id,cost, userEmail, userName} = booking;
     const [clientSecret, setClientSecret] = useState('');
     useEffect(()=>{
+        
         fetch('https://aqueous-dawn-43600.herokuapp.com/create-payment-intent',{
             method: 'POST',
             headers: {
@@ -29,6 +31,7 @@ const CheckoutForm = ({booking}) => {
     },[cost])
 
     const handleSubmit =async (event) =>{
+        setDisabledButton(true);
         event.preventDefault();
         if(!stripe || !elements){
             return;
@@ -62,6 +65,7 @@ const CheckoutForm = ({booking}) => {
           if(intentError){
               setCardError(intentError?.message);
               setProcessing(false)
+              setDisabledButton(false)
           }else{
               setCardError('');
               setTransactionId(paymentIntent.id)
@@ -83,6 +87,7 @@ const CheckoutForm = ({booking}) => {
               .then(res=>res.json())
               .then(data=> {
                   setProcessing(false)
+                  setDisabledButton(false)
                 })
 
           }
@@ -108,7 +113,7 @@ const CheckoutForm = ({booking}) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm btn-success mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
+                <button className='btn btn-sm btn-success mt-4' type="submit" disabled={!stripe || !clientSecret || success || disabledButton}>
                     Pay
                 </button>
             </form>

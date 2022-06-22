@@ -57,11 +57,11 @@ const TravelBookingModal = ({booking, date, setDate ,setBooking, refetch}) => {
                             dateFormat="d MMMM, yyyy"
                             closeOnScroll={true}
                     />
-                    <input type="text" name='name' value={user.displayName}  className="input input-bordered w-full max-w-xs" />
-                    <input type="email" name='email' value={user.email}  className="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='name' defaultValue={user.displayName}  className="input input-bordered w-full max-w-xs" />
+                    <input type="email" name='email' defaultValue={user.email}  className="input input-bordered w-full max-w-xs" />
                     <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
-                    <input type="text" name='cost' disabled value={`$ ${cost}`} className="input input-bordered w-full max-w-xs" />
-                    <input type="submit" value="Submit" className="btn btn-secondary" />
+                    <input type="text" name='cost' disabled defaultValue={`$ ${cost}`} className="input input-bordered w-full max-w-xs" />
+                    <input type="submit" defaultValue="Submit" className="btn btn-secondary" />
                 </form>
             </div>
             </div>

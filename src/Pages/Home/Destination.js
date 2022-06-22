@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from '../Shared/PrimaryButton';
-import './Gallery.css'
+
 const Destination = ({destination}) => {
     const {destinationName,description, cost, img, _id} = destination;
     return (
@@ -13,7 +13,9 @@ const Destination = ({destination}) => {
                 <h2 className="card-title text-orange-500 text-3xl">{destinationName}</h2>
                 <p>{description}</p>
                 <p>Cost: ${cost}</p>
-                <PrimaryButton><Link to={`/destination/${_id}`}>Book now</Link></PrimaryButton>
+                <div className="tooltip tooltip-danger" data-tip={`Book now ${destinationName} as your travel destination`}>
+                    <PrimaryButton><Link to={`/destination/${_id}`}>Book now</Link></PrimaryButton>
+                </div>
             </div>
         </div>
     );

@@ -19,30 +19,43 @@ const UpdateProfile = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [user, loading]= useAuthState(auth)
     const imgStrorageKey = '634b89a1202c978f0b0218c7ddea37ca'
-    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`).then(res=>res.json()));
+    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+        method: 'GET', 
+        headers:{
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res=>res.json()));
     const [editImage , setEditImage] = useState(false)
     const [editGender , setEditGender] = useState(false)
     const [editDob , setEditDob] = useState(false)
     const [editPhone , setEditPhone] = useState(false)
+    const [disabledButton, setDisabledButton]= useState(false);
+    const [newdisabledButton, setNewDisabledButton]= useState(true);
+
     /* console.log(date);
     console.log(userData.dob) */
     const handleImage=()=>{
         setEditImage(true)
+        setDisabledButton(true);
     }
     const handleGender=()=>{
         setEditGender(true)
+        setDisabledButton(true);
     }
     const handleDob=()=>{
         setEditDob(true)
+        setDisabledButton(true);
     }
     const handlePhone=()=>{
         setEditPhone(true)
+        setDisabledButton(true);
     }
-    
     if(loading){
         <Loading></Loading>
     }
     const onSubmit = async data =>{
+        setDisabledButton(false);
+        setNewDisabledButton(false)
          if(data.image){
             const image = data?.image[0];
             const formData = new FormData();
@@ -76,14 +89,18 @@ const UpdateProfile = () => {
                 })
                 .then(res=>res.json())
                 .then(inserted=>{
-                    console.log(inserted)
+                    // console.log(inserted)
                    if(inserted.result.modifiedCount === 1){
                        toast.success('Profile Successfully');
                        reset();
+                       setDisabledButton(true);
+                       setNewDisabledButton(true);
                        navigate('/dashboard');
                    }
                    else{
                        toast.error('Failed to Update Your Profile')
+                       setDisabledButton(true);
+                       setNewDisabledButton(true);
                    }
                 })
             }
@@ -98,7 +115,6 @@ const UpdateProfile = () => {
                 phone: data.phone,
                 dob: dateofBirth ||  formattedDate 
             }
-            console.log(profile)
             fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user?.email}`, {
                 method: 'PUT',
                 headers: {
@@ -109,14 +125,17 @@ const UpdateProfile = () => {
             })
             .then(res=>res.json())
             .then(inserted=>{
-                console.log(inserted)
                if(inserted.result.modifiedCount === 1){
                    toast.success('Profile Successfully');
                    reset();
                    navigate('/dashboard');
+                   setDisabledButton(true);
+                   setNewDisabledButton(true);
                }
                else{
                    toast.error('Failed to Update Your Profile')
+                   setDisabledButton(true);
+                   setNewDisabledButton(true);
                }
             })
         } 
@@ -325,10 +344,30 @@ const UpdateProfile = () => {
                         </div>
                         
                     </div>
-                    <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                    {
+                        (userData.image || userData.gender || userData.phone || userData.dob)?
+                        <>
+                            {
+                                disabledButton ? <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                                : <input disabled type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                            }
+                        </>
+                        :
+                        <>
+                            {
+                                newdisabledButton ? <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/> :
+                                <input disabled type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                            }
+                        </>
+                    }
                 </form>
         </div>
     );
 };
 
 export default UpdateProfile;
+/* 
+{
+    disabledButton ? <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+    : <input disabled type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+} */

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import PageTitle from '../Shared/PageTitle';
 import Review from './Review.';
 
 const Reviews = () => {
@@ -10,6 +11,7 @@ const Reviews = () => {
     }
     return (
         <div className='my-12'>
+            <PageTitle title="Reviews"></PageTitle>
             <h3 className='text-5xl font-bold text-primary text-center'>Travelers Review</h3>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 my-5 lg:ml-5 '>
                 {

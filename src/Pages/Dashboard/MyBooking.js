@@ -36,7 +36,7 @@ const MyBooking = () => {
         <Loading></Loading>
     }
     return (
-        <div className='w-full mx-5'>
+        <div className='w-full mx-5 mb-12'>
             <h2 className='text-5xl font-bold text-primary text-center my-5'>My Destinations</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">

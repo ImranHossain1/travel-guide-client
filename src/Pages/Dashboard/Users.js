@@ -24,7 +24,6 @@ const Users = () => {
                         <th>NO:</th>
                         <th>Name</th>
                         <th>Role</th>
-
                     </tr>
                     </thead>
                     <tbody>

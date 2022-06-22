@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
+import PageTitle from '../Shared/PageTitle';
 const Login = () => {
     const {register, handleSubmit, watch, formState: { errors }}= useForm();
     let signInErrorMessage;
@@ -37,6 +38,7 @@ const Login = () => {
     };
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+            <PageTitle title="Login"></PageTitle>
             <div className='hidden sm:block'>
                 <img src={loginbg} alt="" className='w-full h-full object-cover'/>
             </div>
@@ -85,7 +87,7 @@ const Login = () => {
                     </div>
                     <div className='flex justify-between text-gray-400 py-2'>
                         <p className='flex items-center'><input className='mr-2 ' type="checkbox" />Remember me</p>
-                        <p >Forget Parword?</p>
+                        <p ><Link to='/resetPassword'>Forget Parword?</Link></p>
                     </div>
                     <button className='w-full my-5 py-2 bg-teal-500  hover:bg-teal-800 text-white font-semibold rounded-lg'>Sign In</button>
                     <div className='flex justify-center text-gray-400 py-2'>

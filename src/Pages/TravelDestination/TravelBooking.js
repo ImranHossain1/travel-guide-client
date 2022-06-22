@@ -7,6 +7,7 @@ import 'react-day-picker/dist/style.css';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import TravelBookingModal from './TravelBookingModal';
+import PageTitle from '../Shared/PageTitle';
 const TravelBooking = () => {
     const [date, setDate] = useState(new Date());
     const [booking, setBooking]=useState(null);
@@ -23,17 +24,20 @@ const TravelBooking = () => {
     
     return (
         <div className="hero min-h-screen bg-base-200">
+            <PageTitle title="Booking"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={destination.img} className="max-w-sm rounded-lg shadow-2xl" />
+                <img src={destination.img} className="max-w-xs rounded-lg shadow-2xl pics" />
                 <div>
                 <h1 className="text-5xl font-bold">{destination.destinationName}</h1>
                 <p className="py-6">{destination.description}</p>
                 <h2>Cost: {destination.cost}</h2>
-                <label 
-                    onClick={()=>setBooking(destination)} 
-                    htmlFor="booking-modal" className="btn btn-primary">
-                        CONFIRM BOOKING
-                </label>
+                <div className="tooltip tooltip-danger mt-5" data-tip={`Confirm your Booking for ${destination.destinationName}`}>
+                    <label 
+                        onClick={()=>setBooking(destination)} 
+                        htmlFor="booking-modal" className="btn btn-primary">
+                            CONFIRM BOOKING
+                    </label>
+                </div>
                 
                 </div>
             </div>
@@ -52,16 +56,3 @@ const TravelBooking = () => {
 
 export default TravelBooking;
 
-
-
-/*
-                 <DatePicker
-                        mode="single"
-                        className='rounded-lg ml-2 px-2'
-                        selected={date}
-                        onSelect={setDate}
-                        minDate={new Date()}
-                        dateFormat="d MMMM, yyyy"
-                        closeOnScroll={true}
-                    />
-*/

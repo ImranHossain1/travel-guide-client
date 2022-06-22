@@ -6,13 +6,27 @@ import userImg from '../../assets/user.png'
 import useAdmin from '../../hooks/useAdmin';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
+import useNotifications from '../../hooks/useNotifications';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
+    const [users]= useNotifications();
     const [admin] = useAdmin(user)
-    const {data: userData, isLoading, refetch} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`).then(res=>res.json()));
+    let count = 0;
+    const {data: userData, isLoading, refetch} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+        method: 'GET',
+        headers: {
+            'content-type' : 'application/json',
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res=>res.json()));
     if(isLoading){
         return <Loading></Loading>
     }
+    users.forEach(user => {
+        if(user.unread){
+            count++
+        }
+    });
     //console.log(user)
     return (
         <div className="drawer drawer-mobile">
@@ -43,6 +57,7 @@ const Dashboard = () => {
                         <li><Link to='/dashboard/users'>Users</Link></li>
                         <li><Link to='/dashboard/addDestination'>Add New Destinations</Link></li>
                         <li><Link to='/dashboard/manageDestinations'>Manage Destinations</Link></li>
+                        <li><Link to='/dashboard/notifications'>Notifications {(count !=0) && <span className='text-red-500'>({count})</span>}</Link></li>
                     </>}
                 </ul>            
             </div>

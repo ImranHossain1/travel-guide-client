@@ -12,6 +12,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [user, loading]= useAuthState(auth)
     const [rating, setRating] = useState(2);
+    const [disabledButton, setDisabledButton]= useState(true);
     if(loading){
         <Loading></Loading>
     }
@@ -20,7 +21,7 @@ const AddReview = () => {
         //here set your state for rating
     }
     const onSubmit = async data =>{
-            console.log(data)
+            setDisabledButton(false)
             const review ={
                 name: user.displayName,
                 comment: data.comment,
@@ -40,10 +41,13 @@ const AddReview = () => {
                        toast.success('Review Added Successfully');
                        reset();
                        setRating(2)
+                       setDisabledButton(true);
                    }
                    else{
-                       toast.error('Failed to add this Review')
+                       toast.error('Failed to add this Review');
+                       setDisabledButton(true);
                    }
+
                 })
     }
     return (
@@ -89,9 +93,10 @@ const AddReview = () => {
                                 initialRating= {rating}                              
                             />
                     </div>
-                        
-
-                    <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                    {
+                        disabledButton ? <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                        : <input disabled type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                    }
                 </form>
         </div>
     );

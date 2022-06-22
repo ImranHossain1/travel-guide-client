@@ -24,6 +24,9 @@ import AddDestination from './Pages/Dashboard/AddDestination';
 import UpdateProfile from './Pages/Dashboard/UpdateProfile';
 import AddReview from './Pages/Dashboard/AddReview';
 import Reviews from './Pages/Reviews/Reviews';
+import Notifications from './Pages/Dashboard/Notifications';
+import Notification from './Pages/Dashboard/Notification';
+import ResetPassword from './Pages/Login/ResetPassword';
 function App() {
   return (
     <div className="App">
@@ -43,9 +46,12 @@ function App() {
           <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
           <Route path='addDestination' element={<RequireAdmin><AddDestination></AddDestination></RequireAdmin>}></Route>
           <Route path='manageDestinations' element={<RequireAdmin><ManageDestinations></ManageDestinations></RequireAdmin>}></Route>
+          <Route path='notifications' element={<RequireAdmin><Notifications></Notifications></RequireAdmin>}></Route>
+          <Route path='notification/:id' element={<RequireAdmin><Notification></Notification></RequireAdmin>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
         </Route>
         <Route path='Login' element={<Login></Login>}/>
+        <Route path='resetPassword' element={<ResetPassword></ResetPassword>}/>
         <Route path='Register' element={<Register></Register>}/>
       </Routes>
       <Footer></Footer>

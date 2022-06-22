@@ -5,7 +5,6 @@ import auth from '../../firebase.init';
 import usePhotos from '../../hooks/usePhotos';
 import Loading from '../Shared/Loading';
 import PrimaryButton from '../Shared/PrimaryButton';
-import './Gallery.css';
 import {motion} from 'framer-motion';
 
 const Gallery = () => {

@@ -7,7 +7,12 @@ import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 const Profile = () => {
     const [user, loading] = useAuthState(auth);
-    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`).then(res=>res.json()));
+    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+        method: 'GET', 
+        headers:{
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res=>res.json()));
     if(isLoading){
         return <Loading></Loading>
     }
@@ -18,8 +23,8 @@ const Profile = () => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title uppercase">{userData.name || user.displayName}</h2>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <tbody>
                         <tr>
                             <th>Date of Birth:</th>

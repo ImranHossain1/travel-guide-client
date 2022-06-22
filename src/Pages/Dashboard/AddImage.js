@@ -1,5 +1,5 @@
 import { async } from '@firebase/util';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
@@ -8,6 +8,7 @@ import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 const AddImage = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
+    const [disabledButton, setDisabledButton]= useState(true);
     const [user, loading]= useAuthState(auth)
     const [destinations, isLoading] = useDestinations();
     const imgStrorageKey = '634b89a1202c978f0b0218c7ddea37ca'
@@ -15,6 +16,7 @@ const AddImage = () => {
         <Loading></Loading>
     }
     const onSubmit = async data =>{
+        setDisabledButton(false)
         let location;
         if(data.location){
             location = data.location
@@ -51,9 +53,11 @@ const AddImage = () => {
                    if(inserted.insertedId){
                        toast.success('Image Added Successfully');
                        reset();
+                       setDisabledButton(true)
                    }
                    else{
-                       toast.error('Failed to add this Image')
+                       toast.error('Failed to add this Image');
+                       setDisabledButton(true)
                    }
                 })
             }
@@ -106,9 +110,10 @@ const AddImage = () => {
                                 {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
                             </label>
                     </div>
-                        
-
-                    <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                    {
+                        disabledButton ? <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                        : <input disabled type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
+                    }
                 </form>
         </div>
     );
