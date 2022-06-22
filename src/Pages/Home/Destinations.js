@@ -25,10 +25,7 @@ const Destinations = () => {
                 }
             </div>
             <div className='flex justify-center'>
-                {
-                    !user? <PrimaryButton><Link to='/destination'>Login to Explore more places</Link></PrimaryButton>
-                    : <PrimaryButton><Link to='/destination'>Explore more places</Link></PrimaryButton>
-                }
+                    <PrimaryButton><Link to='/destination'>Explore more Citys</Link></PrimaryButton>
             </div>
         </div>
     );
