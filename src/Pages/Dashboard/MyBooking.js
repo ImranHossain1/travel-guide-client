@@ -48,7 +48,6 @@ const MyBooking = () => {
                         <th>Destination</th>
                         <th>Cost</th>
                         <th>Payment</th>
-                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -63,7 +62,7 @@ const MyBooking = () => {
                                 {(booking.cost && booking.paid) && <div>
                                         <p><span className='text-success'>Paid</span></p>
                                         <p>Transaction id: <span className='text-success'>{booking.transactionId}</span></p>
-                                    </div>}
+                                </div>}
                             </td>
                         </tr>)
                         }
