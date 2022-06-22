@@ -1,7 +1,6 @@
 import React from 'react';
 import banner1 from "../../assets/images/banner1.jpg"
 import banner2 from "../../assets/images/banner2.webp"
-import banner3 from "../../assets/images/banner3.webp"
 import PrimaryButton from '../Shared/PrimaryButton';
 const Banner = () => {
     return (

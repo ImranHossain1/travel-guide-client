@@ -8,7 +8,7 @@ import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
 import PageTitle from '../Shared/PageTitle';
 const Login = () => {
-    const {register, handleSubmit, watch, formState: { errors }}= useForm();
+    const {register, handleSubmit, formState: { errors }}= useForm();
     let signInErrorMessage;
     const [signInWithGoogle, guser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
@@ -89,6 +89,7 @@ const Login = () => {
                         <p className='flex items-center'><input className='mr-2 ' type="checkbox" />Remember me</p>
                         <p ><Link to='/resetPassword'>Forget Parword?</Link></p>
                     </div>
+                    {signInErrorMessage}
                     <button className='w-full my-5 py-2 bg-teal-500  hover:bg-teal-800 text-white font-semibold rounded-lg'>Sign In</button>
                     <div className='flex justify-center text-gray-400 py-2'>
                         <p className='flex items-center'><Link to='/register'>Don't have any account? Please Register</Link></p>

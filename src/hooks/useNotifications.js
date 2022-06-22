@@ -1,5 +1,3 @@
-import React from 'react';
-import Loading from '../Pages/Shared/Loading';
 import { useQuery } from 'react-query';
 const useNotifications = () => {
         const {data: messages, isLoading, refetch} = useQuery('messages', ()=>fetch(' https://aqueous-dawn-43600.herokuapp.com/notifications',{

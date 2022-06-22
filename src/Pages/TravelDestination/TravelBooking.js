@@ -3,16 +3,11 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useQuery } from 'react-query';
 import 'react-day-picker/dist/style.css';
-//import { format } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
 import TravelBookingModal from './TravelBookingModal';
 import PageTitle from '../Shared/PageTitle';
 const TravelBooking = () => {
     const [date, setDate] = useState(new Date());
     const [booking, setBooking]=useState(null);
-    //const formattedDate = format(date, 'PP')
-    const today = new Date();
     const {id} = useParams();
     const url= `https://aqueous-dawn-43600.herokuapp.com/destination/${id}`;
     const {data:destination, isLoading, refetch} = useQuery(['destination', id], ()=>fetch(url,{
@@ -26,7 +21,7 @@ const TravelBooking = () => {
         <div className="hero min-h-screen bg-base-200">
             <PageTitle title="Booking"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={destination.img} className="max-w-xs rounded-lg shadow-2xl pics" />
+                <img src={destination.img} alt="" className="max-w-xs rounded-lg shadow-2xl pics" />
                 <div>
                 <h1 className="text-5xl font-bold">{destination.destinationName}</h1>
                 <p className="py-6">{destination.description}</p>

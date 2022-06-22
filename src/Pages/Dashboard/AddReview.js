@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -20,7 +19,7 @@ const AddReview = () => {
         setRating(value)
         //here set your state for rating
     }
-    const onSubmit = async data =>{
+    const onSubmit = data =>{
             setDisabledButton(false)
             const review ={
                 name: user.displayName,

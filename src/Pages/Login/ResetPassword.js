@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import loginbg from '../../assets/images/login3.jpg';
 import auth from '../../firebase.init';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail} from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
-import useToken from '../../hooks/useToken';
 import { toast } from 'react-toastify';
 import PageTitle from '../Shared/PageTitle';
 const ResetPassword = () => {
-    const {register, handleSubmit, watch, formState: { errors }}= useForm();
+    const {register, handleSubmit, formState: { errors }}= useForm();
+    let signInErrorMessage;
     let navigate = useNavigate();
     const [sendPasswordResetEmail, sending, loading, error,] = useSendPasswordResetEmail(auth);
     if (loading || sending) {
         return <Loading></Loading>
     }
-
+    if(error){
+        signInErrorMessage = <p className='text-red-500'><small>{error?.message}</small></p>
+    }
     const onSubmit =async data => {
         if (data.email) {
             await sendPasswordResetEmail(data.email);
@@ -55,6 +57,7 @@ const ResetPassword = () => {
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>
                     </div>
+                    {signInErrorMessage}
                     <button className='w-full my-5 py-2 bg-teal-500  hover:bg-teal-800 text-white font-semibold rounded-lg'>Reset Password</button>
                     <div className='flex justify-center text-gray-400 py-2'>
                         <p className='flex items-center'><Link to='/login'>Go Back to Login</Link></p>

@@ -1,9 +1,7 @@
-import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
-import useDestinations from '../../hooks/useDestinations';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 import DatePicker from "react-datepicker";
@@ -53,6 +51,10 @@ const UpdateProfile = () => {
     if(loading){
         <Loading></Loading>
     }
+    if(isLoading){
+        <Loading></Loading>
+    }
+    
     const onSubmit = async data =>{
         setDisabledButton(false);
         setNewDisabledButton(false)
@@ -157,7 +159,7 @@ const UpdateProfile = () => {
                                                     userData.image? 
                                                         <div className='flex justify-between items-center'>
                                                             <div className="w-48 ">
-                                                                <img src={userData?.image} className='rounded-lg'/>
+                                                                <img src={userData?.image} alt="" className='rounded-lg'/>
                                                             </div>
                                                             <button onClick={()=>handleImage()} className='btn btn-primary uppercase text-gray-700 font-bold hover:btn-secondary'>Edit</button>
                                                         </div>

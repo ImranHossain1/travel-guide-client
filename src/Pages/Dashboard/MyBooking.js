@@ -8,7 +8,7 @@ import Loading from '../Shared/Loading';
 
 const MyBooking = () => {
     const [bookings, setBookings] = useState([]);
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     useEffect(()=>{
         if(user){

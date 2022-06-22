@@ -8,7 +8,7 @@ import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 import PageTitle from '../Shared/PageTitle';
 const Register = () => {
-    const {register, handleSubmit, watch, formState: { errors }}= useForm();
+    const {register, handleSubmit, formState: { errors }}= useForm();
     const [agree, setAgree] = useState(false);
     let signInErrorMessage;
     const [
@@ -117,6 +117,7 @@ const Register = () => {
                     </div>
                     <div className="divider text-gray-400">OR</div>
                     <button 
+                         disabled={!agree}
                         onClick={() => signInWithGoogle()}
                         className={`${!agree ? 'w-full my-5 py-2 bg-gray-700 text-white font-semibold rounded-lg' :
                         'w-full my-5 py-2 bg-white text-green-900  hover:bg-green-800 hover:text-white font-semibold rounded-lg'}`}>

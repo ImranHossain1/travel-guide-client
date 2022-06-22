@@ -1,7 +1,6 @@
 import React from 'react';
 import useNotifications from '../../hooks/useNotifications';
 import Loading from '../Shared/Loading';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import DeleteConfirmNotificationModal from './DeleteConfirmNotificationModal';
 import NotificationRow from './NotificationRow';
@@ -45,7 +44,7 @@ const Notifications = () => {
     return (
         <div className='w-full mx-5'>
             <div className='flex justify-center items-center'>
-                <h2 className='text-5xl font-bold text-primary text-center my-2'>Notifications {(count !=0) && <span className='text-red-500'>({count})</span>}</h2>
+                <h2 className='text-5xl font-bold text-primary text-center my-2'>Notifications {(count !==0) && <span className='text-red-500'>({count})</span>}</h2>
                 {
                     !unread ? 
                     <button className='btn btn-xs btn-success mt-2' onClick={handleUnread}>See Unread Messages</button>

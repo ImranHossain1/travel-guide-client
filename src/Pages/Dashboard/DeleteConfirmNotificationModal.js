@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const DeleteConfirmNotificationModal = ({deletingNotification, refetch, setDeletingNotification}) => {
-    const {senderEmail, subject , _id} = deletingNotification;
+    const {subject , _id} = deletingNotification;
     const handleDelete = ()=>{
         fetch(` https://aqueous-dawn-43600.herokuapp.com/notification/${_id}`,{
             method: 'DELETE',

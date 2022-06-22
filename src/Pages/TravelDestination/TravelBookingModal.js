@@ -1,14 +1,18 @@
 import { format } from 'date-fns';
-import React, { useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import auth from '../../firebase.init';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
+import Loading from '../Shared/Loading';
 const TravelBookingModal = ({booking, date, setDate ,setBooking, refetch}) => {
     const [user, loading, error] = useAuthState(auth);
     const formattedDate = format(date, 'PP')
     const {_id, destinationName, cost} = booking;
+    if(loading){
+        <Loading></Loading>
+    }
     const handleBooking = e =>{
         e.preventDefault();
         const confirmBooking = {

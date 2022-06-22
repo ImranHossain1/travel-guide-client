@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useDestinations from '../../hooks/useDestinations';
 import Loading from '../Shared/Loading';
 import PageTitle from '../Shared/PageTitle';
-import PrimaryButton from '../Shared/PrimaryButton';
 import TravelDestination from './TravelDestination';
 
 const TravelDestinations = () => {

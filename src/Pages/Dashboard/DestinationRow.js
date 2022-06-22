@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DestinationRow = ({destination,index, refetch, setDeletingdestination }) => {
-    const {destinationName, img, cost, _id, email}= destination;
+    const {destinationName, img, cost}= destination;
     return (
         <tr>
             <th>{index+1}</th>

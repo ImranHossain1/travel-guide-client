@@ -1,21 +1,13 @@
-import { async } from '@firebase/util';
 import React, { useState } from 'react';
-//import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-//import auth from '../../firebase.init';
-
-import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 const AddDestination = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [disabledButton, setDisabledButton]= useState(true);
-    //const [user, loading]= useAuthState(auth)
     const imgStrorageKey = '634b89a1202c978f0b0218c7ddea37ca'
     
-    const onSubmit = async data =>{
+    const onSubmit = data =>{
         setDisabledButton(false)
-        //console.log(data);
-        let location;
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image',image);

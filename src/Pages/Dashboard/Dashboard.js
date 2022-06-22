@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [users]= useNotifications();
     const [admin] = useAdmin(user)
     let count = 0;
-    const {data: userData, isLoading, refetch} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
         method: 'GET',
         headers: {
             'content-type' : 'application/json',
@@ -44,7 +44,7 @@ const Dashboard = () => {
                 {/* <!-- Sidebar content here --> */}
                 <div className="avatar flex flex-col items-center">
                     <div className="w-24 rounded-full">
-                        <img src={userData?.image  || userImg} />
+                        <img src={userData?.image  || userImg} alt={user.displayName} />
                     </div>
                     <p><li>{user.displayName}</li></p>
                 </div>
@@ -57,7 +57,7 @@ const Dashboard = () => {
                         <li><Link to='/dashboard/users'>Users</Link></li>
                         <li><Link to='/dashboard/addDestination'>Add New Destinations</Link></li>
                         <li><Link to='/dashboard/manageDestinations'>Manage Destinations</Link></li>
-                        <li><Link to='/dashboard/notifications'>Notifications {(count !=0) && <span className='text-red-500'>({count})</span>}</Link></li>
+                        <li><Link to='/dashboard/notifications'>Notifications {(count !==0) && <span className='text-red-500'>({count})</span>}</Link></li>
                     </>}
                 </ul>            
             </div>
