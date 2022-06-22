@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import PageTitle from '../Shared/PageTitle';
 const AddDestination = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [disabledButton, setDisabledButton]= useState(true);
@@ -53,6 +54,7 @@ const AddDestination = () => {
     }
     return (
         <div className='mb-12'>
+            <PageTitle title="Add New Destinations"></PageTitle>
             <h2 className='text-5xl font-bold text-primary text-center my-5'>Add a New Destination</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
                     <div className="form-control w-full max-w-xs">

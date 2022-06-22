@@ -5,6 +5,7 @@ import Loading from '../Shared/Loading';
 import userImg from '../../assets/user.png'
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import PageTitle from '../Shared/PageTitle';
 const Profile = () => {
     const [user, loading] = useAuthState(auth);
     const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
@@ -21,6 +22,7 @@ const Profile = () => {
     }
     return (
         <div className="card w-96 bg-base-100 shadow-xl mb-5">
+            <PageTitle title={user.displayName}></PageTitle>
             <figure className="px-10 pt-10">
                 <img src={userData.image || userImg} alt={userData.name || user.displayName} className="rounded-lg" />
             </figure>

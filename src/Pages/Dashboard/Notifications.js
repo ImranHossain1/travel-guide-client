@@ -4,6 +4,7 @@ import Loading from '../Shared/Loading';
 import { useState } from 'react';
 import DeleteConfirmNotificationModal from './DeleteConfirmNotificationModal';
 import NotificationRow from './NotificationRow';
+import PageTitle from '../Shared/PageTitle';
 const Notifications = () => {
     const [messages, isLoading, refetch]= useNotifications();
     const [deletingNotification, setDeletingNotification] = useState(null);

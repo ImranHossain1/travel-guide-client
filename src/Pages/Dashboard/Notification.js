@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import { Link } from 'react-router-dom';
+import PageTitle from '../Shared/PageTitle';
 const Notification = () => {
     const {id} = useParams();
     const url = ` https://aqueous-dawn-43600.herokuapp.com/notification/${id}`;

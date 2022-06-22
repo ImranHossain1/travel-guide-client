@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageTitle from '../Shared/PageTitle';
 const NotificationRow = ({unread, message, setDeletingNotification, handleNotification}) => {
     return (
         <tr>

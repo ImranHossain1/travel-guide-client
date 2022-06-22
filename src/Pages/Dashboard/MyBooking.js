@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import PageTitle from '../Shared/PageTitle';
 
 
 const MyBooking = () => {
@@ -37,6 +38,7 @@ const MyBooking = () => {
     }
     return (
         <div className='w-full mx-5 mb-12'>
+            <PageTitle title="My Bookings"></PageTitle>
             <h2 className='text-5xl font-bold text-primary text-center my-5'>My Destinations</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">

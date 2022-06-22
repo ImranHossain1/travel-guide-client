@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import useDestinations from '../../hooks/useDestinations';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
+import PageTitle from '../Shared/PageTitle';
 const AddImage = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [disabledButton, setDisabledButton]= useState(true);
@@ -67,6 +68,7 @@ const AddImage = () => {
     }
     return (
         <div>
+            <PageTitle title="Upload Image"></PageTitle>
             <h2 className='text-5xl font-bold text-primary text-center my-5'>Upload New Image</h2>
             <form onSubmit={handleSubmit(onSubmit)}  className="flex flex-col items-center">
                     <div className="form-control w-full max-w-xs">
