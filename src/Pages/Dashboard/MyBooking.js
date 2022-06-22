@@ -48,6 +48,7 @@ const MyBooking = () => {
                         <th>Destination</th>
                         <th>Cost</th>
                         <th>Payment</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>

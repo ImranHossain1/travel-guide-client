@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [users]= useNotifications();
     const [admin] = useAdmin(user)
     let count = 0;
-    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+    const {data: userData, isLoading} = useQuery(["loggedUser"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
         method: 'GET',
         headers: {
             'content-type' : 'application/json',

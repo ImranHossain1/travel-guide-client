@@ -35,6 +35,7 @@ const AddImage = () => {
                 const img = result.data.url;
                 const photo ={
                     uploadedBy: user.displayName,
+                    uploadedUser: user.email,
                     place: location,
                     image: img
                 }
