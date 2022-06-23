@@ -1,4 +1,5 @@
 import React from 'react';
+import { Bounce } from 'react-reveal';
 import { toast } from 'react-toastify';
 
 const DeleteConfirmModal = ({deletingDestination, refetch, setDeletingDestination}) => {
@@ -23,19 +24,21 @@ const DeleteConfirmModal = ({deletingDestination, refetch, setDeletingDestinatio
     }
     return (
         <div>
-            <input type="checkbox" id="delete-confirm-modal" className="modal-toggle" />
-            <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box">
-                <h3 className="font-bold text-lg text-red-500">Are you sure you want to delete {destinationName}</h3>
-                <p className="py-4">Make sure if you delete this destination would create some issue while people want to book.</p>
-                <div className="modal-action">
-                    <button onClick={()=>handleDelete()} className="btn btn-xs btn-error">
-                        Delete
-                    </button>
-                    <label htmlFor="delete-confirm-modal" className="btn btn-xs">Cancel</label>
+                <input type="checkbox" id="delete-confirm-modal" className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                <Bounce right cascade>
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg text-red-500">Are you sure you want to delete {destinationName}</h3>
+                        <p className="py-4">Make sure if you delete this destination would create some issue while people want to book.</p>
+                        <div className="modal-action">
+                            <button onClick={()=>handleDelete()} className="btn btn-xs btn-error">
+                                Delete
+                            </button>
+                            <label htmlFor="delete-confirm-modal" className="btn btn-xs">Cancel</label>
+                        </div>
+                    </div>
+                </Bounce>
                 </div>
-            </div>
-            </div>
         </div>
     );
 };

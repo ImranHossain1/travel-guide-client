@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import auth from '../../firebase.init';
 import {  toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
+import { LightSpeed, Zoom } from 'react-reveal';
 const TravelBookingModal = ({booking, date, setDate ,setBooking, refetch}) => {
     const [user, loading, error] = useAuthState(auth);
     const formattedDate = format(date, 'PP')
@@ -50,23 +51,30 @@ const TravelBookingModal = ({booking, date, setDate ,setBooking, refetch}) => {
             <div className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
                 <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                <h3 className="font-bold text-lg text-secondary">Booking For: {destinationName}</h3>
-                <form onSubmit={handleBooking}  className='grid grid-cols-1 gap-4 mt-2'>
-                    <DatePicker
-                            mode="single"
-                            className="input input-bordered w-full max-w-xs"
-                            selected={date}
-                            onSelect={setDate}
-                            minDate={new Date()}
-                            dateFormat="d MMMM, yyyy"
-                            closeOnScroll={true}
-                    />
-                    <input type="text" name='name' defaultValue={user.displayName}  className="input input-bordered w-full max-w-xs" />
-                    <input type="email" name='email' defaultValue={user.email}  className="input input-bordered w-full max-w-xs" />
-                    <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
-                    <input type="text" name='cost' disabled defaultValue={`$ ${cost}`} className="input input-bordered w-full max-w-xs" />
-                    <input type="submit" defaultValue="Submit" className="btn btn-secondary" />
-                </form>
+                <LightSpeed top cascade>
+                    <div className='flex items-center font-bold text-lg text-secondary'>
+                        <h3 className='mr-3'>Booking For: </h3>
+                        <h3 className='text-orange-800'>{destinationName}</h3>
+                    </div>
+                </LightSpeed>
+                <Zoom right cascade>
+                    <form onSubmit={handleBooking}  className='grid grid-cols-1 gap-4 mt-2'>
+                        <DatePicker
+                                mode="single"
+                                className="input input-bordered w-full max-w-xs"
+                                selected={date}
+                                onSelect={setDate}
+                                minDate={new Date()}
+                                dateFormat="d MMMM, yyyy"
+                                closeOnScroll={true}
+                        />
+                        <input type="text" name='name' defaultValue={user.displayName}  className="input input-bordered w-full max-w-xs" />
+                        <input type="email" name='email' defaultValue={user.email}  className="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='cost' disabled defaultValue={`$ ${cost}`} className="input input-bordered w-full max-w-xs" />
+                        <input type="submit" defaultValue="Submit" className="btn btn-secondary" />
+                    </form>
+                </Zoom>
             </div>
             </div>
         </div>

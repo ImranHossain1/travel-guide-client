@@ -8,6 +8,7 @@ import germany from "../../assets/germany.jpg"
 import PageTitle from '../Shared/PageTitle';
 import { faImages } from '@fortawesome/free-regular-svg-icons';
 import TravelGallery from './TravelGallery';
+import { Fade, Zoom } from 'react-reveal';
 const TravelBooking = () => {
     const [date, setDate] = useState(new Date());
     const [booking, setBooking]=useState(null);
@@ -29,12 +30,15 @@ const TravelBooking = () => {
             <div className="hero-overlay bg-opacity-60 "></div>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className=''>
-                    <img src={destination.img} className="max-w-xs rounded-lg shadow-2xl pics" />
+                    <Zoom bottom>
+                        <img src={destination.img} className="max-w-xs rounded-lg shadow-2xl pics" />
+                    </Zoom>
                 </div>
                 <div className='flex flex-col items-center'>
+                    <Fade left cascade>
                     <h1 className="text-5xl font-bold text-orange-500 uppercase">{destination.destinationName}</h1>
                     <p className="py-6 text-2xl text-gray-300 ">{destination.description}</p>
-                    <p className="py-6 text-2xl text-white "> Travel fee: <span className='text-orange-700 font-bold'>{destination.cost}</span></p>
+                    <p className="py-6 text-2xl text-white "> Travel fee: <span className='text-orange-300 font-bold'>{destination.cost}</span></p>
                     <div className="tooltip tooltip-danger mt-5" data-tip={`Confirm your Booking for ${destination.destinationName}`}>
                         <label 
                             onClick={()=>setBooking(destination)} 
@@ -42,6 +46,7 @@ const TravelBooking = () => {
                                 CONFIRM BOOKING
                         </label>
                     </div>
+                    </Fade>
                 </div>
 
             </div>
