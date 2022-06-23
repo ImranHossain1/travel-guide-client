@@ -15,7 +15,7 @@ const MyBooking = () => {
     const [user, loading] = useAuthState(auth);
 
     //const navigate = useNavigate();
-    const {data: bookings, isLoading, refetch} = useQuery(["booking"], ()=>fetch(`http://localhost:5000/booking/${user.email}`,{
+    const {data: bookings, isLoading, refetch} = useQuery(["booking"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/booking/${user.email}`,{
         method: 'GET', 
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const BookingDeleteModal = ({deleteBooking, setDeleteBooking, refetch}) => {
     const {bookingName, _id} = deleteBooking;
     const handleDelete = ()=>{
-        fetch(`http://localhost:5000/booking/${_id}`,{
+        fetch(`https://aqueous-dawn-43600.herokuapp.com/booking/${_id}`,{
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
