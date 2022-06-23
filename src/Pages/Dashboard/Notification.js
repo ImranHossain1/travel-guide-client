@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import { Link } from 'react-router-dom';
 import PageTitle from '../Shared/PageTitle';
+import { Zoom } from 'react-reveal';
 const Notification = () => {
     const {id} = useParams();
     const url = ` https://aqueous-dawn-43600.herokuapp.com/notification/${id}`;
@@ -20,6 +21,7 @@ const Notification = () => {
     const {senderEmail, subject, body}= notification;
     return (
         <div className="card w-full m-12 p-12 bg-neutral text-neutral-content flex justify-center items-center">
+            <Zoom top cascade>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{subject}</h2>
                 <p>Email by: {senderEmail}</p>
@@ -28,6 +30,7 @@ const Notification = () => {
                     <button className="btn btn-primary my-5" > <Link to="/dashboard/notifications">Back to Notifications</Link></button>
                 </div>
             </div>
+            </Zoom>
         </div>
     );
 };

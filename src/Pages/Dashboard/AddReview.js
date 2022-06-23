@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Rating from 'react-rating';
 import { useState } from 'react';
 import PageTitle from '../Shared/PageTitle';
+import { Fade, Zoom } from 'react-reveal';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
@@ -53,7 +54,10 @@ const AddReview = () => {
     return (
         <div>
             <PageTitle title="Add Review"></PageTitle>
-            <h2 className='text-5xl font-bold text-primary text-center my-5'>Please Give us a Review</h2>
+            <Fade top cascade>
+                <h2 className='text-5xl font-bold text-primary text-center my-5'>Please Give us a Review</h2>
+            </Fade>
+            <Zoom left cascade>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
                     <div className="form-control w-full max-w-xs " >
                             <label className="label">
@@ -99,6 +103,7 @@ const AddReview = () => {
                         : <input disabled type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>
                     }
                 </form>
+            </Zoom>
         </div>
     );
 };

@@ -1,8 +1,10 @@
 import React from 'react';
+import { Zoom } from 'react-reveal';
 
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-200 bg-gray-300 text-base-content">
+            <Zoom bottom cascade>
             <div>
                 <span className="footer-title">Services</span> 
                 <a className="link link-hover">Branding</a> 
@@ -35,6 +37,7 @@ const Footer = () => {
                 </div>
                 </div>
             </div>
+            </Zoom>
         </footer>
     );
 };

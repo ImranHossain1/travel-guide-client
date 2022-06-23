@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Zoom } from "react-reveal";
 import { toast } from "react-toastify";
 import landscape from '../../assets/images/landscape5.gif'
 import PrimaryButton from "../Shared/PrimaryButton";
@@ -33,7 +34,7 @@ const Contact = () => {
       })
   }
   return (
-    <div className='px-10 py-14  my-12 w-full bg-no-repeat bg-center' style={{
+    <div className='px-10 py-14  w-full bg-no-repeat bg-center' style={{
         background:`url(${landscape})`
     }} >
       <div className='text-center pb-14 text-gray-300'>
@@ -42,6 +43,7 @@ const Contact = () => {
         </p>
         <h1 className='text-4xl'>Stay connected with us</h1>
       </div>
+      <Zoom cascade>
       <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 justify-items-center gap-5'>
         <input
           type="email"
@@ -101,6 +103,7 @@ const Contact = () => {
         }
         <PrimaryButton>Submit</PrimaryButton>
       </form>
+      </Zoom>
     </div>
   );
 };

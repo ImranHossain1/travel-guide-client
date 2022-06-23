@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { Zoom } from 'react-reveal';
 const UpdateProfile = () => {
     const [date, setDate] = useState(new Date());
     let formattedDate = format(date, 'PP')
@@ -146,6 +147,7 @@ const UpdateProfile = () => {
     return (
         <div className='w-full mx-5 mb-12'>
             <h2 className='text-5xl font-bold text-primary text-center my-5'>Upload New Image</h2>
+            <Zoom right cascade>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center">
                     <div className="form-control w-full max-w-xs">
                                 <label className="label">
@@ -363,6 +365,7 @@ const UpdateProfile = () => {
                         </>
                     }
                 </form>
+            </Zoom>
         </div>
     );
 };

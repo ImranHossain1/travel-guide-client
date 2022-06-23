@@ -6,6 +6,7 @@ import usePhotos from '../../hooks/usePhotos';
 import Loading from '../Shared/Loading';
 import PrimaryButton from '../Shared/PrimaryButton';
 import {motion} from 'framer-motion';
+import { Bounce, LightSpeed } from 'react-reveal';
 
 const Gallery = () => {
     const [width, setWidth] = useState(0);
@@ -20,17 +21,19 @@ const Gallery = () => {
     }
     return (
         <>
-            <div>
+            <LightSpeed top cascade>
                 <h3 className='text-5xl font-bold text-primary text-center my-5'>Photo Gallery</h3 >
-            </div>
+                </LightSpeed>
             <div className='m-5 '>
                 <motion.div ref={carousel} className='carousel rounded' whileTap={{cursor: 'grabbing'}}>
-                    <motion.div drag="x" dragConstraints={{right:0, left: -width}} className='gallery inner-carousel'>
+                    <motion.div drag="x" dragConstraints={{right:0, left: -width}} className='inner-carousel'>
                     {
                         photos?.slice(0,6).map(photo=>{
                             return(
                                 <motion.div key={photo._id} className='item pics'>
-                                    <img src={photo.image} alt=""/>
+                                    <Bounce right cascade>
+                                        <img src={photo.image} alt=""/>
+                                    </Bounce>
                                 </motion.div>
                             )
                         })

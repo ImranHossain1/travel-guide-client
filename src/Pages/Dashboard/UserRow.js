@@ -1,4 +1,5 @@
 import React from 'react';
+import { Bounce } from 'react-reveal';
 import { toast } from 'react-toastify';
 
 const UserRow = ({user, refetch, index}) => {
@@ -26,9 +27,12 @@ const UserRow = ({user, refetch, index}) => {
     }
     return (
         <tr>
-            <th>{index+1}</th>
-            <td>{email}</td>
-            <td>{role!=='admin' && <button className="btn btn-xs" onClick={makeAdmin}>Make Admin</button>}</td>
+            <Bounce left cascade>
+                <th>{index+1}</th>
+                <td>{email}</td>
+                <td>{role!=='admin' ? <button className="btn btn-xs" onClick={makeAdmin}>Make Admin</button>
+                : <p className='text-success font-bold'>Admin</p>}</td>
+            </Bounce>
         </tr>
     );
 };

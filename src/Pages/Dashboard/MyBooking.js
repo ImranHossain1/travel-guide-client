@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Bounce, Fade } from 'react-reveal';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import PageTitle from '../Shared/PageTitle';
@@ -27,11 +27,14 @@ const MyBooking = () => {
     return (
         <div className='w-full mx-5 mb-12'>
             <PageTitle title="My Bookings"></PageTitle>
-            <h2 className='text-5xl font-bold text-primary text-center my-5'>My Destinations</h2>
+            <Fade top cascade>
+                <h2 className='text-5xl font-bold text-primary text-center my-5'>My Destinations</h2>
+            </Fade>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                     <tr>
+                    <Bounce right cascade>
                         <th></th>
                         <th>Name</th>
                         <th>Date</th>
@@ -39,10 +42,12 @@ const MyBooking = () => {
                         <th>Cost</th>
                         <th>Payment</th>
                         <th>Delete</th>
+                    </Bounce>
                     </tr>
                     </thead>
                     <tbody>
                         {bookings.map((booking, index)=> <tr key={booking._id}>
+                        <Bounce left cascade>
                             <th>{index+1}</th>
                             <td>{booking.userName}</td>
                             <td>{booking.date}</td>
@@ -59,6 +64,7 @@ const MyBooking = () => {
                             <td>
                             {(booking.cost && !booking.paid) &&  <label onClick={()=> setDeleteBooking(booking)} htmlFor="delete-booking-modal" className="btn btn-xs btn-error modal-button">Delete</label>}
                             </td>
+                            </Bounce>
                         </tr>)
                         }
                         

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import DeleteConfirmNotificationModal from './DeleteConfirmNotificationModal';
 import NotificationRow from './NotificationRow';
 import PageTitle from '../Shared/PageTitle';
+import { Bounce, Fade } from 'react-reveal';
 const Notifications = () => {
     const [messages, isLoading, refetch]= useNotifications();
     const [deletingNotification, setDeletingNotification] = useState(null);
@@ -45,23 +46,27 @@ const Notifications = () => {
     return (
         <div className='w-full mx-5 '>
             <div className='flex justify-center items-center flex-col mb-5'>
-                <h2 className='text-5xl font-bold text-primary text-center my-2'>Notifications {(count !==0) && <span className='text-red-500'>({count})</span>}</h2>
-                <>
-                    {
-                        !unread ? 
-                        <button className='btn btn-xs btn-success mt-2' onClick={handleUnread}>See Unread Messages</button>
-                        :
-                        <button className='btn btn-xs btn-danger mt-2' onClick={handleRead}>See All Messages</button>
-                    }
-                </>
+                <Fade top cascade>
+                    <h2 className='text-5xl font-bold text-primary text-center my-2'>Notifications {(count !==0) && <span className='text-red-500'>({count})</span>}</h2>
+                    <>
+                        {
+                            !unread ? 
+                            <button className='btn btn-xs btn-success mt-2' onClick={handleUnread}>See Unread Messages</button>
+                            :
+                            <button className='btn btn-xs btn-danger mt-2' onClick={handleRead}>See All Messages</button>
+                        }
+                    </>
+                </Fade>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th>Subject</th>
-                            <th>Status</th>
-                            <th>Delete</th>
+                            <Bounce right cascade>
+                                <th>Subject</th>
+                                <th>Status</th>
+                                <th>Delete</th>
+                            </Bounce>
                         </tr>
                     </thead>
                     <tbody>
