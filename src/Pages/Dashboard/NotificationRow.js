@@ -10,7 +10,7 @@ const NotificationRow = ({unread, message, setDeletingNotification, handleNotifi
                     <td>{message.subject}</td>
                     {
                         message.unread ?
-                            <td><Link to={`/dashboard/notification/${message._id}`} onClick={()=>handleNotification(message._id)}><button className='btn btn-xs btn-success'>Read unread Message</button></Link></td>
+                            <td><Link to={`/dashboard/notification/${message._id}`} onClick={()=>handleNotification(message._id)}><button className='btn btn-xs btn-success'>Unread</button></Link></td>
                             : <td><Link to={`/dashboard/notification/${message._id}`}><button className='btn btn-xs btn-danger'>Read Message</button></Link></td>
                     }
                     <td>
@@ -21,7 +21,7 @@ const NotificationRow = ({unread, message, setDeletingNotification, handleNotifi
                     {
                         message.unread && <>
                             <td>{message.subject}</td>
-                            <td><Link to={`/dashboard/notification/${message._id}`} onClick={()=>handleNotification(message._id)}><button className='btn btn-xs btn-success'>Read unread Message</button></Link></td>
+                            <td><Link to={`/dashboard/notification/${message._id}`} onClick={()=>handleNotification(message._id)}><button className='btn btn-xs btn-success'>Unread</button></Link></td>
                             <td>
                                 <label onClick={()=> setDeletingNotification(message)} htmlFor="delete-confirm-notification-modal" className="btn btn-xs btn-error modal-button">Delete</label>
                             </td>

@@ -43,24 +43,25 @@ const Notifications = () => {
         setUnread(false)
     }
     return (
-        <div className='w-full mx-5'>
-            <div className='flex justify-center items-center'>
+        <div className='w-full mx-5 '>
+            <div className='flex justify-center items-center flex-col mb-5'>
                 <h2 className='text-5xl font-bold text-primary text-center my-2'>Notifications {(count !==0) && <span className='text-red-500'>({count})</span>}</h2>
-                {
-                    !unread ? 
-                    <button className='btn btn-xs btn-success mt-2' onClick={handleUnread}>See Unread Messages</button>
-                    :
-                    <button className='btn btn-xs btn-danger mt-2' onClick={handleRead}>See All Messages</button>
-                }
+                <>
+                    {
+                        !unread ? 
+                        <button className='btn btn-xs btn-success mt-2' onClick={handleUnread}>See Unread Messages</button>
+                        :
+                        <button className='btn btn-xs btn-danger mt-2' onClick={handleRead}>See All Messages</button>
+                    }
+                </>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th>Email</th>
+                            <th>Subject</th>
                             <th>Status</th>
                             <th>Delete</th>
-
                         </tr>
                     </thead>
                     <tbody>

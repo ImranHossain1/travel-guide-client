@@ -1,40 +1,28 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import PageTitle from '../Shared/PageTitle';
+import BookingDeleteModal from './BookingDeleteModal';
 
 
 const MyBooking = () => {
-    const [bookings, setBookings] = useState([]);
+    //const [bookings, setBookings] = useState([]);
+    const [deleteBooking, setDeleteBooking]= useState(null)
     const [user, loading] = useAuthState(auth);
-    const navigate = useNavigate();
-    useEffect(()=>{
-        if(user){
-        fetch(`https://aqueous-dawn-43600.herokuapp.com/booking?userEmail=${user.email}`,{
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-        .then(res=>{
-            if(res.status === 401 || res.status===403){
-                signOut(auth);
-                localStorage.removeItem('accessToken')
-                navigate('/');
-            }
-            return res.json()
-        })
-        .then(data=>{           
-            setBookings(data)
-        })
-        } 
-    },[user])
 
-    if(loading){
-        <Loading></Loading>
+    //const navigate = useNavigate();
+    const {data: bookings, isLoading, refetch} = useQuery(["booking"], ()=>fetch(`http://localhost:5000/booking/${user.email}`,{
+        method: 'GET', 
+        headers:{
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res=>res.json()));
+    if(loading || isLoading){
+        return <Loading></Loading>
     }
     return (
         <div className='w-full mx-5 mb-12'>
@@ -50,6 +38,7 @@ const MyBooking = () => {
                         <th>Destination</th>
                         <th>Cost</th>
                         <th>Payment</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,12 +55,20 @@ const MyBooking = () => {
                                         <p>Transaction id: <span className='text-success'>{booking.transactionId}</span></p>
                                 </div>}
                             </td>
+                            <td>
+                            {(booking.cost && !booking.paid) &&  <label onClick={()=> setDeleteBooking(booking)} htmlFor="delete-booking-modal" className="btn btn-xs btn-error modal-button">Delete</label>}
+                            </td>
                         </tr>)
                         }
                         
                     </tbody>
                 </table>
             </div>
+            {   deleteBooking  && <BookingDeleteModal 
+                    deleteBooking = {deleteBooking}
+                    setDeleteBooking= {setDeleteBooking}
+                    refetch= {refetch}
+                ></BookingDeleteModal>}
         </div>
     );
 };

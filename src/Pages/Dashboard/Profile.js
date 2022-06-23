@@ -14,10 +14,7 @@ const Profile = () => {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res=>res.json()));
-    if(loading){
-        return <Loading></Loading>
-    }
-    if(isLoading){
+    if(loading || isLoading){
         return <Loading></Loading>
     }
     return (
