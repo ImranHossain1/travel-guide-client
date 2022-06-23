@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 import useNotifications from '../../hooks/useNotifications';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
-    const [messages]= useNotifications();
+    const [messages , isLoading1]= useNotifications();
     const [admin] = useAdmin(user)
     let count = 0;
     const {data: userData, isLoading} = useQuery(["loggedUser"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
@@ -19,9 +19,13 @@ const Dashboard = () => {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res=>res.json()));
-    if(isLoading){
+    if(isLoading ){
         return <Loading></Loading>
     }
+    if(isLoading1){
+        return <Loading></Loading>
+    }
+
     messages.forEach(message => {
         if(message.unread){
             count++
