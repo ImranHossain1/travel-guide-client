@@ -27,6 +27,7 @@ import Reviews from './Pages/Reviews/Reviews';
 import Notifications from './Pages/Dashboard/Notifications';
 import Notification from './Pages/Dashboard/Notification';
 import ResetPassword from './Pages/Login/ResetPassword';
+import NotFound from './Pages/Notfound/Notfound';
 function App() {
   return (
     <div className="App">
@@ -53,6 +54,7 @@ function App() {
         <Route path='Login' element={<Login></Login>}/>
         <Route path='resetPassword' element={<ResetPassword></ResetPassword>}/>
         <Route path='Register' element={<Register></Register>}/>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer/>

@@ -6,7 +6,7 @@ import PrimaryButton from '../Shared/PrimaryButton';
 const Destination = ({destination}) => {
     const {destinationName,description, cost, img, _id} = destination;
     return (
-        <div className="card lg:max-w-lg bg-base-100 md:shadow-xl gallery">
+        <div className="card lg:max-w-lg bg-base-100 md:shadow-xl">
             <Zoom top cascade>
                 <figure className="px-10 pt-10 pics">
                     <img src={img} alt="Shoes" className="rounded-xl h-72" />

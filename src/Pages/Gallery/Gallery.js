@@ -19,11 +19,11 @@ const Gallery = () => {
                 {
                     photos?.map(photo=>{
                         return(
-                            <div key={photo._id} className="card lg:max-w-lg md:max-h-64 bg-base-100 md:shadow-xl md:mr-5 pics">
-                                <Bounce top cascade>
-                                    <img src={photo.image} alt="" className='w-100 rounded-lg'/>
-                                </Bounce>
+                            <Bounce top cascade>
+                            <div key={photo._id} className="card lg:max-w-lg md:max-h-64 bg-base-100 md:shadow-xl md:mr-5 pics">                               
+                                    <img src={photo.image} alt="" className='w-100 rounded-lg'/>                 
                             </div>
+                            </Bounce>
                         )
                     })
                 }

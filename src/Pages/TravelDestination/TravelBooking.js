@@ -29,11 +29,11 @@ const TravelBooking = () => {
         }} className="hero min-h-screen bg-no-repeat">
             <div className="hero-overlay bg-opacity-60 "></div>
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className=''>
-                    <Zoom bottom>
-                        <img src={destination.img} className="max-w-xs rounded-lg shadow-2xl pics" />
-                    </Zoom>
-                </div>
+                <Zoom bottom>
+                    <div className=''>
+                        <img src={destination.img} className="max-w-xs rounded-lg shadow-2xl pics" />        
+                    </div>
+                </Zoom>
                 <div className='flex flex-col items-center'>
                     <Fade left cascade>
                     <h1 className="text-5xl font-bold text-orange-500 uppercase">{destination.destinationName}</h1>

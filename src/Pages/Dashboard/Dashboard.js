@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import userImg from '../../assets/user.png'
 import useAdmin from '../../hooks/useAdmin';
@@ -8,31 +8,62 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 import useNotifications from '../../hooks/useNotifications';
 import { Bounce, Zoom } from 'react-reveal';
+import { useState } from 'react';
+import { signOut } from 'firebase/auth';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
-    const [messages , isLoading1]= useNotifications();
-    const [admin] = useAdmin(user)
+    const [messages , setMessages]= useState();
+    const [userData, setUserData] = useState([])
+    const [admin] = useAdmin(user);
+    //const [messageUpdate, setMessageUpdate] = useState(false)
+    const navigate = useNavigate();
     let count = 0;
-    const {data: userData, isLoading} = useQuery(["loggedUser"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
-        method: 'GET',
-        headers: {
-            'content-type' : 'application/json',
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    useEffect(()=>{
+        if(user){
+        fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+            method: 'GET',
+            headers: {
+                'content-type' : 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res=>{
+            console.log('res',res);
+            if(res.status === 401 || res.status===403){
+                signOut(auth);
+                localStorage.removeItem('accessToken')
+                navigate('/');
+            }
+            return res.json()
+        })
+        .then(data=>{
+            setUserData(data);
+        })
+        } 
+        if(user){
+            fetch('https://aqueous-dawn-43600.herokuapp.com/notifications',{
+            method: 'GET',
+            headers: {
+                'content-type' : 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }  
+            }).then(res=>res.json())
+            .then(data=>{
+                setMessages(data);
+                //isLoading(false)
+            }) 
         }
-    }).then(res=>res.json()));
-    if(isLoading ){
-        return <Loading></Loading>
-    }
-    if(isLoading1){
-        return <Loading></Loading>
-    }
-
-    messages.forEach(message => {
-        if(message.unread){
-            count++
-        }
-    });
+    },[user])
+    /* useEffect(()=>{
+        
+    },[user]) */
+      messages?.forEach(message => {
+         if(message.unread){
+             count++;
+         }
+     });
     //console.log(user)
+    console.log(messages)
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

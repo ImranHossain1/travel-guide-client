@@ -29,10 +29,10 @@ const Notifications = () => {
               .then(res=>res.json())
               .then(data=> {
                   console.log(data)
-                  refetch()
+                  refetch();
                 })
     }
-    messages.forEach(message => {
+    messages?.forEach(message => {
         if(message.unread){
             count++
         }
@@ -70,7 +70,7 @@ const Notifications = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {messages.map((message, index)=> <NotificationRow key={message._id}
+                    {messages?.map((message, index)=> <NotificationRow key={message._id}
                             unread={unread} 
                             message={message} 
                             setDeletingNotification ={setDeletingNotification} 

@@ -158,7 +158,7 @@ const UpdateProfile = () => {
                                         !editImage ?
                                             <div className='w-75'>
                                                 {
-                                                    userData.image? 
+                                                    userData?.image? 
                                                         <div className='flex justify-between items-center'>
                                                             <div className="w-48 ">
                                                                 <img src={userData?.image} alt="" className='rounded-lg'/>
@@ -207,7 +207,7 @@ const UpdateProfile = () => {
                                     !editGender ?
                                     <div >
                                     {
-                                        userData.gender?
+                                        userData?.gender?
                                             <div className='flex justify-between'>
                                                 <div>
                                                     <input type="text" value={userData.gender} disabled className="input input-bordered w-full max-w-xs uppercase" />
@@ -244,7 +244,7 @@ const UpdateProfile = () => {
                                 !editDob?
                                     <div>
                                     {
-                                        userData.dob? 
+                                        userData?.dob? 
                                                 <div className='flex justify-between'>
                                                     <div>
                                                     <input type="text" value={userData.dob} disabled className="input input-bordered w-full max-w-xs" />
@@ -284,7 +284,7 @@ const UpdateProfile = () => {
                                 !editPhone?
                                 <div >
                                 { 
-                                    userData.phone?
+                                    userData?.phone?
                                         <div className='flex justify-between'>
                                             <div>
                                             <input type="text" value={userData.phone} disabled className="input input-bordered w-full max-w-xs" />
@@ -349,7 +349,7 @@ const UpdateProfile = () => {
                         
                     </div>
                     {
-                        (userData.image || userData.gender || userData.phone || userData.dob)?
+                        (userData?.image || userData?.gender || userData?.phone || userData?.dob)?
                         <>
                             {
                                 disabledButton ? <input type="submit" className='btn w-full max-w-xs' value='SUBMIT'/>

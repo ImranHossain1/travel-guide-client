@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import userImg from '../../assets/user.png'
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PageTitle from '../Shared/PageTitle';
 import { Zoom } from 'react-reveal';
+import { signOut } from 'firebase/auth';
 const Profile = () => {
     const [user, loading] = useAuthState(auth);
-    const {data: userData, isLoading} = useQuery(["user"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
-        method: 'GET', 
-        headers:{
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res=>res.json()));
-    if(loading || isLoading){
+    const [userData, setUserData] = useState([]);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(user){
+        fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user.email}`,{
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res=>{
+            //console.log('res',res);
+            if(res.status === 401 || res.status===403){
+                signOut(auth);
+                localStorage.removeItem('accessToken')
+                navigate('/');
+            }
+            return res.json()
+        })
+        .then(data=>{
+            setUserData(data)
+        })
+        } 
+    },[user])
+    if(loading){
         return <Loading></Loading>
     }
     return (

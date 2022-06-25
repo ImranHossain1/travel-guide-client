@@ -13,7 +13,9 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-60 "></div>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <Zoom bottom>
-                    <img src={banner1} className="max-w-xs rounded-lg shadow-2xl pics" />
+                    <div className=''>
+                        <img src={banner1} className="max-w-xs rounded-lg shadow-2xl pics" />
+                    </div>
                 </Zoom>
                 <Fade left cascade>
                     <div className='flex flex-col items-center'>
