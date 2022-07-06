@@ -22,11 +22,11 @@ const TravelGallery = ({destinationName}) => {
                 {
                     images?.map(photo=>{
                         return(
-                            <Bounce top cascade>
                                 <div key={photo._id} className="card lg:max-w-lg md:max-h-64 bg-base-100 md:shadow-xl md:mr-5 pics">
+                                    <Bounce top cascade>
                                     <img src={photo.image} alt="" className='w-100 rounded-lg'/>
+                                    </Bounce>
                                 </div>
-                            </Bounce>
                         )
                     })
                 }
