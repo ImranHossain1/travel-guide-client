@@ -11,7 +11,6 @@ import BookingDeleteModal from './BookingDeleteModal';
 
 
 const MyBooking = () => {
-    //const [bookings, setBookings] = useState([]);
     const [deleteBooking, setDeleteBooking]= useState(null)
     const [user, loading] = useAuthState(auth);
 
