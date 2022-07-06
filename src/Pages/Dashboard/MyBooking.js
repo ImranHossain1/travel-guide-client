@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Bounce, Fade } from 'react-reveal';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import PageTitle from '../Shared/PageTitle';
@@ -15,7 +16,7 @@ const MyBooking = () => {
     const [user, loading] = useAuthState(auth);
 
     //const navigate = useNavigate();
-    const {data: bookings, isLoading, refetch} = useQuery(["booking"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/booking/${user.email}`,{
+    const {data: bookings, isLoading, refetch} = useQuery(["booking"], ()=>fetch(`https://aqueous-dawn-43600.herokuapp.com/booking?user=${user.email}`,{
         method: 'GET', 
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -54,8 +55,8 @@ const MyBooking = () => {
                             <td>{booking.bookingName}</td>
                             <td>{booking.cost}</td>
                             <td>
-                                {/* {(booking.cost && !booking.paid) && <Link to={`/dashboard/payment/${booking._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>} */}
-                                {(booking.cost && !booking.paid) &&<button className='btn btn-xs btn-success'>Pay</button>}
+                                {(booking.cost && !booking.paid) && <Link to={`/dashboard/payment/${booking._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+                                {/* {(booking.cost && !booking.paid) &&<button className='btn btn-xs btn-success'>Pay</button>} */}
                                 {(booking.cost && booking.paid) && <div>
                                         <p><span className='text-success'>Paid</span></p>
                                         <p>Transaction id: <span className='text-success'>{booking.transactionId}</span></p>

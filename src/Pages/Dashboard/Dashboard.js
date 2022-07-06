@@ -28,7 +28,7 @@ const Dashboard = () => {
             }
         })
         .then(res=>{
-            console.log('res',res);
+            //console.log('res',res);
             if(res.status === 401 || res.status===403){
                 signOut(auth);
                 localStorage.removeItem('accessToken')
@@ -63,7 +63,7 @@ const Dashboard = () => {
          }
      });
     //console.log(user)
-    console.log(messages)
+    //console.log(messages)
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

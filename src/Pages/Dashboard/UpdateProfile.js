@@ -14,6 +14,7 @@ const UpdateProfile = () => {
     const [date, setDate] = useState(new Date());
     let formattedDate = format(date, 'PP')
     let dateofBirth;
+    let updatedPhone;
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit , reset} = useForm();
     const [user, loading]= useAuthState(auth)
@@ -113,9 +114,12 @@ const UpdateProfile = () => {
             if(!editDob){
                 dateofBirth = userData.dob
             }
+            if(!editPhone){
+                updatedPhone = userData.phone
+            }
             const profile ={
                 gender: data.gender,
-                phone: data.phone,
+                phone: updatedPhone||data.phone,
                 dob: dateofBirth ||  formattedDate 
             }
             fetch(`https://aqueous-dawn-43600.herokuapp.com/user/${user?.email}`, {

@@ -12,7 +12,7 @@ const CheckoutForm = ({booking}) => {
     const {_id,cost, userEmail, userName} = booking;
     const [clientSecret, setClientSecret] = useState('');
     useEffect(()=>{
-        
+        console.log(cost)
         fetch('https://aqueous-dawn-43600.herokuapp.com/create-payment-intent',{
             method: 'POST',
             headers: {
