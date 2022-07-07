@@ -66,16 +66,16 @@ const Dashboard = () => {
     //console.log(messages)
     return (
         <div className="drawer drawer-mobile  ">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content  mt-5 ml-2  z-10">
+            <input id="my-drawer-10" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content  mt-5 ml-2 ">
                 {/* <!-- Page content here --> */}
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Menu</label>
+                <label htmlFor="my-drawer-10" className="btn btn-primary drawer-button lg:hidden">Menu</label>
                 <div className='flex justify-center  '>
                     <Outlet></Outlet>
                 </div>
             </div> 
-            <div className="drawer-side z-10">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
+            <div className="drawer-side-50">
+                <label htmlFor="my-drawer-10" className="drawer-overlay"></label> 
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content ">
                     
                 {/* <!-- Sidebar content here --> */}
