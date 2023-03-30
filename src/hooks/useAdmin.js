@@ -1,25 +1,28 @@
-import { useEffect, useState } from 'react';
-const useAdmin = user=>{
-    const [admin, setAdmin] = useState(false);
-    const [adminLoading, setAdminLoading]= useState(true)
-    useEffect(()=>{
-        const email = user?.email;
-        if(email){
-            fetch(`https://aqueous-dawn-43600.herokuapp.com/admin/${email}`,{
-                method: 'GET',
-                headers:{
-                    'content-type': 'application/json',
-                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-            .then(res=> res.json())
-            .then(data=>{
-                setAdmin(data.admin)
-                setAdminLoading(false);
-            })
+import { useEffect, useState } from "react";
+const useAdmin = (user) => {
+  const [admin, setAdmin] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(true);
+  useEffect(() => {
+    const email = user?.email;
+    if (email) {
+      fetch(
+        `https://travel-guide-server-production.up.railway.app/admin/${email}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         }
-    },[user])
-    return [admin,adminLoading];
-}
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setAdmin(data.admin);
+          setAdminLoading(false);
+        });
+    }
+  }, [user]);
+  return [admin, adminLoading];
+};
 
-export default useAdmin
+export default useAdmin;
