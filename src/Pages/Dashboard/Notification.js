@@ -7,7 +7,7 @@ import PageTitle from "../Shared/PageTitle";
 import { Zoom } from "react-reveal";
 const Notification = () => {
   const { id } = useParams();
-  const url = ` https://travel-guide-server-production.up.railway.app/notification/${id}`;
+  const url = ` https://travel-guide-server-jex7.onrender.com/notification/${id}`;
 
   const { data: notification, isLoading } = useQuery(["notification", id], () =>
     fetch(url, {

@@ -11,7 +11,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
   console.log(id);
-  const url = `https://travel-guide-server-production.up.railway.app/booking/${id}`;
+  const url = `https://travel-guide-server-jex7.onrender.com/booking/${id}`;
   const { data: booking, isLoading } = useQuery(["booking", id], () =>
     fetch(url, {
       method: "GET",

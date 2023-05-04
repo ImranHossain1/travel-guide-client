@@ -5,15 +5,12 @@ const useNotifications = () => {
     isLoading1,
     refetch,
   } = useQuery("messages", () =>
-    fetch(
-      "https://travel-guide-server-production.up.railway.app/notifications",
-      {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => res.json())
+    fetch("https://travel-guide-server-jex7.onrender.com/notifications", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
 
   return [messages, isLoading1, refetch];

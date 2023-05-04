@@ -10,7 +10,7 @@ const TravelGallery = ({ destinationName }) => {
     refetch,
   } = useQuery(["images"], () =>
     fetch(
-      `https://travel-guide-server-production.up.railway.app/destinationPhoto/${destinationName}`,
+      `https://travel-guide-server-jex7.onrender.com/destinationPhoto/${destinationName}`,
       {
         method: "GET",
       }

@@ -14,8 +14,8 @@ const TravelBooking = () => {
   const [booking, setBooking] = useState(null);
   const [images, setImages] = useState([]);
   const { id } = useParams();
-  const url = `https://travel-guide-server-production.up.railway.app/destination/${id}`;
-  const url2 = `https://travel-guide-server-production.up.railway.app/photo/${id}`;
+  const url = `https://travel-guide-server-jex7.onrender.com/destination/${id}`;
+  const url2 = `https://travel-guide-server-jex7.onrender.com/photo/${id}`;
   const {
     data: destination,
     isLoading,

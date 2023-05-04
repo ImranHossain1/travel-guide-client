@@ -31,17 +31,14 @@ const TravelBookingModal = ({
       userEmail: user.email,
       phone: e.target.phone.value,
     };
-    fetch(
-      "https://travel-guide-server-production.up.railway.app/bookedDestination",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(confirmBooking),
-      }
-    )
+    fetch("https://travel-guide-server-jex7.onrender.com/bookedDestination", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(confirmBooking),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

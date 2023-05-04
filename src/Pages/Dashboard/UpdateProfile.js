@@ -25,15 +25,12 @@ const UpdateProfile = () => {
   const [user, loading] = useAuthState(auth);
   const imgStrorageKey = "634b89a1202c978f0b0218c7ddea37ca";
   const { data: userData, isLoading } = useQuery(["user"], () =>
-    fetch(
-      `https://travel-guide-server-production.up.railway.app/user/${user.email}`,
-      {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => res.json())
+    fetch(`https://travel-guide-server-jex7.onrender.com/user/${user.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   const [editImage, setEditImage] = useState(false);
   const [editGender, setEditGender] = useState(false);
@@ -95,7 +92,7 @@ const UpdateProfile = () => {
             };
             //send data to db
             fetch(
-              `https://travel-guide-server-production.up.railway.app/user/${user?.email}`,
+              `https://travel-guide-server-jex7.onrender.com/user/${user?.email}`,
               {
                 method: "PUT",
                 headers: {
@@ -137,7 +134,7 @@ const UpdateProfile = () => {
         dob: dateofBirth || formattedDate,
       };
       fetch(
-        `https://travel-guide-server-production.up.railway.app/user/${user?.email}`,
+        `https://travel-guide-server-jex7.onrender.com/user/${user?.email}`,
         {
           method: "PUT",
           headers: {

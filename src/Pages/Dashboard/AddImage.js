@@ -48,17 +48,14 @@ const AddImage = () => {
             image: img,
           };
           //send data to db
-          fetch(
-            "https://travel-guide-server-production.up.railway.app/photos",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(photo),
-            }
-          )
+          fetch("https://travel-guide-server-jex7.onrender.com/photos", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(photo),
+          })
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {

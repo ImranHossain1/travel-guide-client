@@ -12,7 +12,7 @@ const ManageDestinations = () => {
     isLoading,
     refetch,
   } = useQuery("manageDestination", () =>
-    fetch("https://travel-guide-server-production.up.railway.app/destination", {
+    fetch("https://travel-guide-server-jex7.onrender.com/destination", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

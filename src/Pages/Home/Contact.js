@@ -20,7 +20,7 @@ const Contact = () => {
       unread: true,
     };
     console.log(mail);
-    fetch(" https://travel-guide-server-production.up.railway.app/email", {
+    fetch(" https://travel-guide-server-jex7.onrender.com/email", {
       method: "POST",
       headers: {
         "content-type": "application/json",

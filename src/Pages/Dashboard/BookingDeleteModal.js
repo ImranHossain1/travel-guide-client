@@ -5,15 +5,12 @@ import { toast } from "react-toastify";
 const BookingDeleteModal = ({ deleteBooking, setDeleteBooking, refetch }) => {
   const { bookingName, _id } = deleteBooking;
   const handleDelete = () => {
-    fetch(
-      `https://travel-guide-server-production.up.railway.app/booking/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`https://travel-guide-server-jex7.onrender.com/booking/${_id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -14,7 +14,7 @@ const CheckoutForm = ({ booking }) => {
   useEffect(() => {
     console.log(cost);
     fetch(
-      "https://travel-guide-server-production.up.railway.app/create-payment-intent",
+      "https://travel-guide-server-jex7.onrender.com/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -76,17 +76,14 @@ const CheckoutForm = ({ booking }) => {
         booking: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(
-        `https://travel-guide-server-production.up.railway.app/booking/${_id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify(payment),
-        }
-      )
+      fetch(`https://travel-guide-server-jex7.onrender.com/booking/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);

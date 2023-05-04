@@ -33,7 +33,7 @@ const AddReview = () => {
       comment: data.comment,
       rating: rating,
     };
-    fetch("https://travel-guide-server-production.up.railway.app/review", {
+    fetch("https://travel-guide-server-jex7.onrender.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

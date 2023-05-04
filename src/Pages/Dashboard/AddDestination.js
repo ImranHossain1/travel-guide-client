@@ -34,17 +34,14 @@ const AddDestination = () => {
             img: img,
           };
           //send data to db
-          fetch(
-            "https://travel-guide-server-production.up.railway.app/destination",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(destination),
-            }
-          )
+          fetch("https://travel-guide-server-jex7.onrender.com/destination", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(destination),
+          })
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {

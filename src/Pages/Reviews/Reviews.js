@@ -6,8 +6,8 @@ import Review from "./Review.";
 
 const Reviews = () => {
   const { data: reviews, isLoading } = useQuery(["reviews"], () =>
-    fetch("https://travel-guide-server-production.up.railway.app/review").then(
-      (res) => res.json()
+    fetch("https://travel-guide-server-jex7.onrender.com/review").then((res) =>
+      res.json()
     )
   );
   if (isLoading) {

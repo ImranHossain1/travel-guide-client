@@ -20,7 +20,7 @@ const MyBooking = () => {
     refetch,
   } = useQuery(["booking"], () =>
     fetch(
-      `https://travel-guide-server-production.up.railway.app/booking?user=${user.email}`,
+      `https://travel-guide-server-jex7.onrender.com/booking?user=${user.email}`,
       {
         method: "GET",
         headers: {

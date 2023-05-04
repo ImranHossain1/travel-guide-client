@@ -9,15 +9,12 @@ const DeleteConfirmModal = ({
 }) => {
   const { destinationName, _id } = deletingDestination;
   const handleDelete = () => {
-    fetch(
-      `https://travel-guide-server-production.up.railway.app/destination/${_id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`https://travel-guide-server-jex7.onrender.com/destination/${_id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

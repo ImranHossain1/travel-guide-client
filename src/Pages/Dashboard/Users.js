@@ -11,7 +11,7 @@ const Users = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://travel-guide-server-production.up.railway.app/user", {
+    fetch("https://travel-guide-server-jex7.onrender.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -10,7 +10,7 @@ const DeleteConfirmNotificationModal = ({
   const { subject, _id } = deletingNotification;
   const handleDelete = () => {
     fetch(
-      ` https://travel-guide-server-production.up.railway.app/notification/${_id}`,
+      ` https://travel-guide-server-jex7.onrender.com/notification/${_id}`,
       {
         method: "DELETE",
         headers: {

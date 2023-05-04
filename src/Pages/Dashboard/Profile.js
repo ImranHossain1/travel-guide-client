@@ -15,7 +15,7 @@ const Profile = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://travel-guide-server-production.up.railway.app/user/${user.email}`,
+        `https://travel-guide-server-jex7.onrender.com/user/${user.email}`,
         {
           method: "GET",
           headers: {

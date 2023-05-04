@@ -21,7 +21,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://travel-guide-server-production.up.railway.app/user/${user.email}`,
+        `https://travel-guide-server-jex7.onrender.com/user/${user.email}`,
         {
           method: "GET",
           headers: {
@@ -44,16 +44,13 @@ const Dashboard = () => {
         });
     }
     if (user) {
-      fetch(
-        "https://travel-guide-server-production.up.railway.app/notifications",
-        {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch("https://travel-guide-server-jex7.onrender.com/notifications", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setMessages(data);
